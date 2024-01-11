@@ -1,20 +1,17 @@
-//Update ข้อมูล Document ทุกอันของ Customer ที่มีชื่อว่า Jack ด้วย updateMany
+// Update ข้อมูล Document ของ Customer ที่มีชื่อว่า Jack โดยที่ทุก Document ต้องมี Key และ Value Pair ดังนี้
+//{ "isAdmin": false }
+
 db.pizzaOrders.updateMany(
   { customer_name: "Jack" },
   { $set: { isAdmin: false } }
 );
 
-//Update ข้อมูล Document ทุกอันด้วย updateMany
-db.pizzaOrders.updateMany(
-  {
-    type: "Documentary",
-  },
-  {
-    $set: { country: "Thailand" },
-  }
-);
+// Update ข้อมูลที่มี Property country และ Value เป็น Thailand เข้าไปในทุกๆ Document ด้วย updateMany
 
-//Update ข้อมูล Document ด้วย updateOne
+db.pizzaOrders.updateMany({}, { $set: { country: "Thailand" } });
+
+// - Update ข้อมูล Document ของ Customer ที่มีชื่อว่า `M` ด้วย `updateOne` แต่ถ้าไม่มีในระบบก็ให้สร้างมาเป็น Document ใหม่
+
 db.pizzaOrders.updateOne(
   {
     customer_name: "M",
